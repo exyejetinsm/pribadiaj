@@ -1783,7 +1783,11 @@ Type *give up* to surrender and admit defeat`;
       case "updatebot":
       case "cekbot":
         {
-         let t3ks = `*「 ${global.botname} Donasi 」*                List Donasi:                                    ⫹⫺ Via Dana: ${global.dana}             ⫹⫺ Via Pulsa ${global.pulsa}🍜`;
+         let t3ks = `
+  *「 ${global.botname} Donasi 」*        
+  List Donasi:                              
+ ⫹⫺ Via Dana: ${global.dana}                
+ ⫹⫺ Via Pulsa ${global.pulsa}🍜`;
           
           
           XeonBotInc.sendMessage(m.chat, {caption: t3ks, image: {url: "https://telegra.ph/file/ff3cf4a4090ebdf43e6bf.jpg"}}, { quoted: ftroli });
