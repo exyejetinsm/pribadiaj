@@ -4286,43 +4286,43 @@ ${cpus
           await fs.unlinkSync(media);
         }
         break;
-      case "spymessage":
-      case "menfess":
-        {
-          if (m.isGroup) throw "feature cannot be used in groups";
-          if (!text)
-            throw `Example : ${
-              prefix + command
-            } 916909xxxxx|fictious name|message`;
-          var mon = args.join(" ");
-          var m1 = mon.split("|")[0];
-          var m2 = mon.split("|")[1];
-          var m3 = mon.split("|")[2];
-          let kafloc = {
-            key: {
-              participant: "0@s.whatsapp.net",
-              ...(m.chat ? { remoteJid: `status@broadcast` } : {}),
-            },
-            message: {
-              locationMessage: { name: `${author}`, jpegThumbnail: thumb },
-            },
-          };
-          let mq1 = m1 + "@s.whatsapp.net";
-          let kawk = "SECRET MESSAGE";
-          let ownernya = ownernomer + "@s.whatsapp.net";
-          let me = m.sender;
-          let ments = [mq1, ownernya, me];
-          let pjtxt = `Message From : ${m2} \nFor : @${
-            mq1.split("@")[0]
-          }\n\n${m3}`;
-          //    let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'Hem' }, type: 1 }]
-          await XeonBotInc.sendMessage(m1 + "@s.whatsapp.net", pjtxt, kawk, m, {
-            quoted: kafloc,
-          });
-          let akhji = `Message Sent\nTo @${mq1.split("@")[0]}`;
-          await XeonBotInc.sendMessage(m.chat, akhji, botname, m);
-        }
-        break;
+      //   case "spymessage":
+      //   case "menfess":
+      //     {
+      //       if (m.isGroup) throw "feature cannot be used in groups";
+      //       if (!text)
+      //         throw `Example : ${
+      //           prefix + command
+      //         } 916909xxxxx|fictious name|message`;
+      //       var mon = args.join(" ");
+      //       var m1 = mon.split("|")[0];
+      //       var m2 = mon.split("|")[1];
+      //       var m3 = mon.split("|")[2];
+      //       let kafloc = {
+      //         key: {
+      //           participant: "0@s.whatsapp.net",
+      //           ...(m.chat ? { remoteJid: `status@broadcast` } : {}),
+      //         },
+      //         message: {
+      //           locationMessage: { name: `${author}`, jpegThumbnail: thumb },
+      //         },
+      //       };
+      //       let mq1 = m1 + "@s.whatsapp.net";
+      //       let kawk = "SECRET MESSAGE";
+      //       let ownernya = ownernomer + "@s.whatsapp.net";
+      //       let me = m.sender;
+      //       let ments = [mq1, ownernya, me];
+      //       let pjtxt = `Message From : ${m2} \nFor : @${
+      //         mq1.split("@")[0]
+      //       }\n\n${m3}`;
+      //       //    let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'Hem' }, type: 1 }]
+      //       await XeonBotInc.sendMessage(m1 + "@s.whatsapp.net", pjtxt, kawk, m, {
+      //         quoted: kafloc,
+      //       });
+      //       let akhji = `Message Sent\nTo @${mq1.split("@")[0]}`;
+      //       await XeonBotInc.sendMessage(m.chat, akhji, botname, m);
+      //     }
+      //     break;
       case "yts":
       case "ytsearch":
         {
@@ -4388,6 +4388,21 @@ ${cpus
           };
           XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m });
         }
+        break;
+      case "bot":
+        let pesanBot = `Halokak Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
+~ igdl ( kegunaanya untuk download ig reel dan post)
+~ sticker ( mengubah foto menjadi sticker )
+~ ytmp4 ( mendownload video yt )
+~ ytmp3 ( mendownload conversi video yt menjadi video )
+~ tiktok ( mendownload video tiktok )
+~ fitur lainnya menyusul
+Jangan lupa donasi agar botnya jalan terus `;
+        XeonBotInc.sendMessage(
+          m.chat,
+          { text: pesanBot },
+          { quoted: fakestatus }
+        );
         break;
       case "play":
       case "ytplay":
