@@ -542,7 +542,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
       );
       jumlahharian = `${dataa.value}`;
     }
-    // auto set bio
+    /*  auto set bio
     if (db.data.settings[botNumber].autobio) {
       let setting = global.db.data.settings[botNumber];
       if (new Date() * 1 - setting.status > 1000) {
@@ -554,7 +554,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         );
         setting.status = new Date() * 1;
       }
-    }
+    } */
 
     //auto recording all
     if (global.autoRecord) {
