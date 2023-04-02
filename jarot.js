@@ -69,7 +69,7 @@ const {
   writeExif,
   writeExifStc,
 } = require("./lib/exif2");
-const pribadi = "ea57a582";
+const pribadi = "0b8e1aff";
 const ini_mark = `0@s.whatsapp.net`;
 const ownernya = ownernomer + "@s.whatsapp.net";
 
@@ -1778,38 +1778,15 @@ Type *give up* to surrender and admit defeat`;
         }
         break;
       case "donasi":
-      case "donasi":
+      case "donate":
       case "cekupdate":
       case "updatebot":
       case "cekbot":
         {
-          teks = `*「 ${global.botname} Donasi 」*                List Donasi:                                    ⫹⫺ Via Dana: ${global.dana}             ⫹⫺ Via Pulsa ${global.pulsa}🍜`;
-          let buttons = [
-            {
-              buttonId: `owner`,
-              buttonText: { displayText: "Owner" },
-              type: 1,
-            },
-          ];
-          let buttonMessage = {
-            image: { url: `https://telegra.ph/file/e7ee72c5f6dab71ee0639.jpg` },
-            jpegThumbnail: log0,
-            caption: teks,
-            footer: `${botname}`,
-            buttons: buttons,
-            headerType: 4,
-            contextInfo: {
-              externalAdReply: {
-                title: "Mau Donasi? Ketik Owner",
-                body: "Click to donasi",
-                thumbnail: fs.readFileSync("Media/theme/cheemspic.jpg"),
-                mediaType: 1,
-                mediaUrl: "https://saweria.co/Lanzzx",
-                sourceUrl: "https://saweria.co/Lanzzx",
-              },
-            },
-          };
-          XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: ftroli });
+         let t3ks = `*「 ${global.botname} Donasi 」*                List Donasi:                                    ⫹⫺ Via Dana: ${global.dana}             ⫹⫺ Via Pulsa ${global.pulsa}🍜`;
+          
+          
+          XeonBotInc.sendMessage(m.chat, {caption: t3ks, image: {url: "https://telegra.ph/file/ff3cf4a4090ebdf43e6bf.jpg"}}, { quoted: ftroli });
         }
         break;
       case "chat":
@@ -4793,7 +4770,7 @@ Judul: ${judul} `,
         m.reply(mess.wait);
         axios
           .get(
-            `https://lanzzz-api.onrender.com/api/dowloader/tikok?url=${args[0]}&apikey=ea57a582`
+            `https://lanzzz-api.onrender.com/api/dowloader/tikok?url=${args[0]}&apikey=${pribadi}`
           )
           .then(({ data }) => {
             var url = data.result.video;
