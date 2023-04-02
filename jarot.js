@@ -340,7 +340,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
       message: {
         contactMessage: {
           displayName: ownername,
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ownername},;;;\nFN:${ownername}\nitem1.TEL;waid=916909137213:916909137213\nitem1.X-ABLabel:Mobile\nEND:VCARD`,
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ownername},;;;\nFN:${ownername}\nitem1.TEL;waid=6281311268263:6281311268263\nitem1.X-ABLabel:Mobile\nEND:VCARD`,
           jpegThumbnail: thumb,
           thumbnail: thumb,
           sendEphemeral: true,
