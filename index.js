@@ -66,7 +66,7 @@ async function startXeonBotInc() {
     const XeonBotInc = XeonBotIncConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['Subscribe Jarot offc','Safari','1.0.0'],
+        browser: ['XyVah Bot Inc','Safari','1.0.0'],
         auth: state
     })
 
@@ -93,7 +93,7 @@ async function startXeonBotInc() {
         if (!XeonBotInc.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
         m = smsg(XeonBotInc, mek, store)
-        require("./jarot")(XeonBotInc, m, chatUpdate, store)
+        require("./main")(XeonBotInc, m, chatUpdate, store)
         } catch (err) {
             console.log(err)
         }

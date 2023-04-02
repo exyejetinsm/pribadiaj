@@ -7,20 +7,20 @@
 </p>
 <div align="center">
   <p align="center">
-<img src="https://telegra.ph/file/c6f6d447f2c76e3795a10.jpg" alt="Img" width="128" height="128"/>
+<img src="https://telegra.ph/file/ff3cf4a4090ebdf43e6bf.jpg" alt="Img" width="128" height="128"/>
 </p>
  <p align="center">
-<a href="#"><img title="JAROT OFFC" src="https://img.shields.io/badge/JAROT%20OFFC-red?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
+<a href="#"><img title="BUAT PRIBADI" src="https://img.shields.io/badge/JAROT%20OFFC-red?colorA=%23ff0000&colorB=%23017e40&style=for-the-badge"></a>
 </p>
   <p align="center">
-<a href="https://wa.me/6285850539404"><img title="Author" src="https://img.shields.io/badge/Author-JAROT OFFC/JulieMwol?color=blue&style=for-the-badge&logo=whatsapp"></a>
-<a href="https://youtube.com/channel/UCW7iXlE7TgvJMIXQck4NYBQ"><img title="YouTube" src="https://img.shields.io/badge/YouTube-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=Youtube"></a>
-<a href="https://instagram.com/Jarotr_"><img title="Instagram" src="https://img.shields.io/badge/Instagram-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=Instagram"></a>
-<a href="https://chat.whatsapp.com/KGuKY4wuKHS8sj6K5IHjFG"><img title="Group Jarot offc" src="https://img.shields.io/badge/Group-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=WhatsApp"></a>
+<a href="https://wa.me/6281311268263"><img title="Author" src="https://img.shields.io/badge/Author-JAROT OFFC/JulieMwol?color=blue&style=for-the-badge&logo=whatsapp"></a>
+<a href="https://youtube.com/@xyzlann1747"><img title="YouTube" src="https://img.shields.io/badge/YouTube-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=Youtube"></a>
+<a href="https://instagram.com/mf4dhlan_24?igshid=YmMyMTA2M2Y="><img title="Instagram" src="https://img.shields.io/badge/Instagram-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=Instagram"></a>
+<a href="https://chat.whatsapp.com/JgEbKEY7kfz8qclCYSNbEt"><img title="Group Bot Discuss" src="https://img.shields.io/badge/Group-Jarot Offc/JulieMwol?color=blue&style=for-the-badge&logo=WhatsApp"></a>
 </p>
 </div>
 <p align="center">
-Project created by <a href="https://github.com/JarotOffc">JAROT OFFC</a> to make it public
+Project created by <a href="https://github.com/exyejetinsm">GITHUB GW</a> to make it public
     <br>
        | © |
         Reserved |
@@ -44,8 +44,8 @@ Project created by <a href="https://github.com/JarotOffc">JAROT OFFC</a> to make
 * Any text editor
 ## `Clone Repo & Installation dependencies`
 ```bash
-git clone https://github.com/JarotOffc/oscar-md-v6.git
-cd oscar-md-v6
+git clone https://github.com/exyejetinsm/pribadiaj.git
+cd pribadiaj
 
 npm start
 ```
@@ -61,8 +61,8 @@ pkg install nodejs -y
 pkg install ffmpeg -y 
 pkg install wget
 pkg install imagemagick -y
-git clone https://github.com/JarotOffc/oscar-md-v6
-cd oscar-md-v6
+git clone https://github.com/exyejetinsm/pribadiaj
+cd pribadiaj
 npm start
 ```
 ## `For VPS`
@@ -73,8 +73,8 @@ apt apt install ffmpeg
 apt apt install libwebp 
 apt apt install imagrmagick
 apt install bash
-git clone https://github.com/JarotOffc/oscar-md-v6
-cd oscar-md-v6
+git clone https://github.com/exyejetinsm/pribadiaj
+cd pribadiaj
 npm start
 ```
 ## `For 24/7 Activation (Termux)`
@@ -92,7 +92,7 @@ npm i -g pm2 && pm2 start index.js && pm2 save && pm2 logs
 
 ## Stats
 
-![Jarotr Offc GitHub stats](https://github-readme-stats.vercel.app/api?username=JarotOffc&show_icons=true&theme=radical)
+![exyejetinsm GitHub stats](https://github-readme-stats.vercel.app/api?username=JarotOffc&show_icons=true&theme=radical)
 
 <p align="center"><a href="https://github.com/Kangsad01"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JarotOffc&theme=radical&layout=compact"></a></p>
 
