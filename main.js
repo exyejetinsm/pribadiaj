@@ -12668,6 +12668,32 @@ Judul: ${judul} `,
           }
         }
         break;
+        case "img": case "ai-img": case "image": case "images":
+          try {
+            if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return m.reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
+            if (!text) return m.reply(`Membuat gambar dari AI.\n\nContoh:\n${prefix}${command} Wooden house on snow mountain`);
+            const configuration = new Configuration({
+              apiKey: setting.keyopenai,
+            });
+            const openai = new OpenAIApi(configuration);
+            const response = await openai.createImage({
+              prompt: text,
+              n: 1,
+              size: "512x512",
+            });
+            //console.log(response.data.data[0].url)
+            XeonBotInc.sendImage(from, response.data.data[0].url, text, mek);
+            } catch (error) {
+          if (error.response) {
+            console.log(error.response.status);
+            console.log(error.response.data);
+            console.log(`${error.response.status}\n\n${error.response.data}`);
+          } else {
+            console.log(error);
+            m.reply("Maaf, sepertinya ada yang error :"+ error.message);
+          }
+        }
+          break;
       default:
         if (budy.startsWith("=>")) {
           if (!isCreator) return m.reply(mess.owner);
