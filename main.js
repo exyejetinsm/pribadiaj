@@ -4174,6 +4174,43 @@ ${cpus
           );
         }
         break;
+        case "tiktok2":
+           let urli = data.result.video;
+            let { toAudio } = require("./lib/converter");
+          let audioo = await toAudio(urli, "mp4");
+        if (!text)
+          return m.reply(
+            `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
+          );
+        m.reply(mess.wait);
+        axios
+          .get(
+            `https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`
+          )
+          .then(({ data }) => {
+            let uname = data.result.username;
+            let desc = data.result.description;
+            XeonBotInc.sendMessage(m.chat, {
+              video: { url: urli },
+              caption: `SUDAH KAK ${pushname}\n
+🎭 Username  : ${uname}
+🩲 Deskripsi : ${desc}
+
+Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
+              footer: `By kak fadhlan bot`,
+              quoted: fkontak,
+              mention: [sender],
+            });
+            XeonBotInc.sendMessage(m.chat, {
+              audio: { url: audioo },
+              mimetype: "audio/mpeg",
+              ptt: true,
+              quoted: fkontak,
+              mention: [sender],
+            });
+          });
+          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
+        break;
       case "tomp3":
         {
           if (/document/.test(mime))
@@ -4903,43 +4940,7 @@ Judul: ${judul} `,
           });
           XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
         break;
-        case "tiktok2":
-        if (!text)
-          return m.reply(
-            `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
-          );
-        m.reply(mess.wait);
-        axios
-          .get(
-            `https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`
-          )
-          .then(({ data }) => {
-            var url = data.result.video;
-            let { toAudio } = require("./lib/converter");
-          let audioo = await toAudio(url, "mp4");
-            let uname = data.result.username;
-            let desc = data.result.description;
-            XeonBotInc.sendMessage(m.chat, {
-              video: { url: url },
-              caption: `SUDAH KAK ${pushname}\n
-🎭 Username  : ${uname}
-🩲 Deskripsi : ${desc}
-
-Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
-              footer: `By kak fadhlan bot`,
-              quoted: fkontak,
-              mention: [sender],
-            });
-            XeonBotInc.sendMessage(m.chat, {
-              audio: { url: audioo },
-              mimetype: "audio/mpeg",
-              ptt: true
-              quoted: fkontak,
-              mention: [sender],
-            });
-          });
-          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
-        break;
+        
       // tktok udqah
       /* case 'tiktok': case 'tt':
             {
