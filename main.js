@@ -4174,9 +4174,11 @@ ${cpus
           );
         }
         break;
+        case "jajal2":
+          let baper = await fetchJson(`https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`)
+XeonBotInc.sendMessage(from, {video: {url: baper}})
+break
         case "tiktok2":
-          
-           
         if (!text)
           return m.reply(
             `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
@@ -4188,8 +4190,6 @@ ${cpus
           )
           .then(({ data }) => {
             let urli = data.result.video;
-            let { toAudio } = require("./lib/converter");
-          let audioo = toAudio(urli, "mp4");
             let uname = data.result.username;
             let desc = data.result.description;
             XeonBotInc.sendMessage(m.chat, {
@@ -4204,11 +4204,9 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
               mention: [sender],
             });
             XeonBotInc.sendMessage(m.chat, {
-              audio: { url: audioo },
+              audio: { url: `${data.result[0].audio}`} ,
               mimetype: "audio/mpeg",
               ptt: true,
-              quoted: fkontak,
-              mention: [sender],
             });
           });
           XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
