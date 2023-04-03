@@ -4175,6 +4175,7 @@ ${cpus
         }
         break;
         case "jajal2":
+          if (!text) throw `linknya mana `
           let baper = await fetchJson(`https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`)
 XeonBotInc.sendMessage(from, {video: {url: baper}})
 break
