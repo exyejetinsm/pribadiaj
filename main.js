@@ -95,7 +95,8 @@ if (time2 < "11:00:00") {
 if (time2 < "05:00:00") {
   var ucapanWaktu = "Good morning 🌉";
 }
-const grupe = `*FITUR INI DI KHUSUSKAN UNTUK GRUP*!!! \n\nMASUK GRUP INI UNTUK MENGGUNAKAN BOT XYVAH.\n\nLink Grup : _https://chat.whatsapp.com/JgEbKEY7kfz8qclCYSNbEt_`
+import { Configuration, OpenAIApi } from "openai";
+const grupe = `*FITUR INI DI KHUSUSKAN UNTUK GRUP*!!! \n\nMASUK GRUP INI UNTUK MENGGUNAKAN BOT XYVAH.\n\nLink Grup : _https://chat.whatsapp.com/JgEbKEY7kfz8qclCYSNbEt_`;
 // read database
 let tebaklagu = (db.data.game.tebaklagu = []);
 let _family100 = (db.data.game.family100 = []);
@@ -1783,14 +1784,22 @@ Type *give up* to surrender and admit defeat`;
       case "updatebot":
       case "cekbot":
         {
-         let t3ks = `
+          let t3ks = `
   *「 ${global.botname} Donasi 」*        
   List Donasi:                              
  ⫹⫺ Via Dana: ${global.dana}                
  ⫹⫺ Via Pulsa ${global.pulsa}🍜`;
-          
-          
-          XeonBotInc.sendMessage(m.chat, {caption: t3ks, image: {url: "https://telegra.ph/file/ff3cf4a4090ebdf43e6bf.jpg"}}, { quoted: ftroli });
+
+          XeonBotInc.sendMessage(
+            m.chat,
+            {
+              caption: t3ks,
+              image: {
+                url: "https://telegra.ph/file/ff3cf4a4090ebdf43e6bf.jpg",
+              },
+            },
+            { quoted: ftroli }
+          );
         }
         break;
       case "chat":
@@ -4002,7 +4011,6 @@ ${cpus
       case "stickergif":
       case "sgif":
         {
-          
           if (!quoted)
             throw `*Reply Video/Image With Caption* ${prefix + command}`;
           m.reply(mess.wait);
@@ -4175,22 +4183,30 @@ ${cpus
           );
         }
         break;
-        case "ssweb":
-          if (!text) throw `Linknya mana??\n\nContoh : ${prefix + command} https://lanzz.usahasiswa.me/`
-          m.reply("wait akan ku ss...")
-         let sswebb = `https://lanzzz-api.onrender.com/api/tools/ssweb?link=${text}&apikey=0b8e1aff`
-         XeonBotInc.sendMessage(m.chat, {image:{url: sswebb}}, {quoted: fakestatus})
-         break
-        
-        case "hai":
-         case "xyvah":
-         if (!text) throw `nanya apa?`
-         let simy = await fetchJson(`https://saipulanuar.ga/api/f/simi?text=${text}`)
-         XeonBotInc.sendMessage(m.chat, {text: simy.result},{quoted:m})
-         break
-         
-         
-        /*;case "jajal2":
+      case "ssweb":
+        if (!text)
+          throw `Linknya mana??\n\nContoh : ${
+            prefix + command
+          } https://lanzz.usahasiswa.me/`;
+        m.reply("wait akan ku ss...");
+        let sswebb = `https://lanzzz-api.onrender.com/api/tools/ssweb?link=${text}&apikey=0b8e1aff`;
+        XeonBotInc.sendMessage(
+          m.chat,
+          { image: { url: sswebb } },
+          { quoted: fakestatus }
+        );
+        break;
+
+      case "hai":
+      case "xyvah":
+        if (!text) throw `nanya apa?`;
+        let simy = await fetchJson(
+          `https://saipulanuar.ga/api/f/simi?text=${text}`
+        );
+        XeonBotInc.sendMessage(m.chat, { text: simy.result }, { quoted: m });
+        break;
+
+      /*;case "jajal2":
           if (!text) throw `linknya mana `
           let baper = await fetchJson(`https://lanzzz-api.onrender.com/api/dowloader/tikok?url=${text}&apikey=0b8e1aff`)
           let media = baper.result.video;
@@ -4198,18 +4214,18 @@ ${cpus
           let audio = await toAudio(media, "mp4");
 XeonBotInc.sendMessage(from, {audio: {url: audio}})
 break */
-        case "tiktok":
-        if (!m.isGroup) throw `${grupe}`
+      case "tiktok":
+        if (!m.isGroup) throw `${grupe}`;
         if (!text)
           return m.reply(
             `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
           );
-        let mus = `tiktokmp3 ${text}`
-        m.reply(`kalau mau download sound nya salin teks dibawah ini :\n\n${mus}`)
+        let mus = `tiktokmp3 ${text}`;
+        m.reply(
+          `kalau mau download sound nya salin teks dibawah ini :\n\n${mus}`
+        );
         axios
-          .get(
-            `https://saipulanuar.ga/api/download/tiktok?url=${text}`
-          )
+          .get(`https://saipulanuar.ga/api/download/tiktok?url=${text}`)
           .then(({ data }) => {
             let urli = data.result.video;
             let uname = data.result.username;
@@ -4225,7 +4241,15 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
               mention: [sender],
             });
           });
-          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
+        XeonBotInc.sendMessage(
+          m.chat,
+          {
+            audio: fs.readFileSync("./Media/audio/tiktok.mp3"),
+            mimetype: "audio/mpeg",
+            ptt: true,
+          },
+          { quoted: m }
+        );
         break;
       case "tomp3":
         {
@@ -4454,107 +4478,132 @@ ketik #donasi untuk donasi,
 ya walaupun gada yg donate`;
         XeonBotInc.sendMessage(
           m.chat,
-          { image: { url: `https://telegra.ph/file/ad250e6cc626201bc0365.jpg`}, caption: pesanBot},
-          { quoted: fakestatus }, { mentions: m.sender }
+          {
+            image: { url: `https://telegra.ph/file/ad250e6cc626201bc0365.jpg` },
+            caption: pesanBot,
+          },
+          { quoted: fakestatus },
+          { mentions: m.sender }
         );
         break;
-    case "jadwalsholat":
-     case "adzan":
-       let ownernya = ownernomer + "@s.whatsapp.net";
-       let mens = m.sender;
-     if (!text) throw `Contoh : ${prefix + command} Jakarta`;
-     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
-           var text = `Wilayah : ${data.result[0].lokasi}\n`
-					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
-					text += `*SELAMAT MENUNAIKAN IBADAH PUASA kak @${mens.split("@")[0]}*\n\n*Owner Bot ini :  @${ownernya.split("@")[0]}*`
-	XeonBotInc.sendMessage(m.chat, {text: text}, {quoted: fakestatus}, {mentions: mens, ownernya})
-				})
-				.catch(console.error)
-					break;
-	case "jadwalsholat2":
-     case "adzan2":
-     if (!text) throw `Contoh : ${prefix + command} Tangerang`;
-     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
-           var text = `Wilayah : ${data.result[0].lokasi}\n`
-					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
-					text += `*WILAYAH KEDUA*\n\n`
-					
-					text += `Wilayah : ${data.result[1].lokasi}\n`
-					text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[1].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[1].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[1].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[1].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[1].jadwal.isya}\n\n`
-					text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`
-					XeonBotInc.sendMessage(from, {text: text}, {quoted: fakestatus})
-				})
-				.catch(console.error)
-				break
-    case "jadwalsholat3":
-     case "adzan3":
-     if (!text) throw `Contoh : ${prefix + command} Tangerang`;
-     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
-           var text = `Wilayah : ${data.result[0].lokasi}\n`
-					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
-					text += `*WILAYAH KEDUA*\n\n`
-					
-					text += `Wilayah : ${data.result[1].lokasi}\n`
-					text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[1].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[1].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[1].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[1].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[1].jadwal.isya}\n\n`
-					
-					text += `*WILAYAH KETIGA*\n\n`
-					
-					text += `Wilayah : ${data.result[2].lokasi}\n`
-					text += `Tanggal : ${data.result[2].jadwal.tanggal}\n`
-					text += `Imsak : ${data.result[2].jadwal.imsak}\n`
-					text += `Subuh : ${data.result[2].jadwal.subuh}\n`
-					text += `Terbit : ${data.result[2].jadwal.terbit}\n`
-					text += `Dhuha : ${data.result[2].jadwal.dhuha}\n`
-					text += `Dzuhur : ${data.result[2].jadwal.dzuhur}\n`
-					text += `Ashar : ${data.result[2].jadwal.ashar}\n`
-					text += `Maghrib : ${data.result[2].jadwal.maghrib}\n`
-					text += `Isya : ${data.result[2].jadwal.isya}\n\n`
-           text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`
-					XeonBotInc.sendMessage(from, {text: text}, {quoted: fakestatus})
-				})
-				.catch(console.error)
-			break 
-        
+      case "jadwalsholat":
+      case "adzan":
+        let ownernya = ownernomer + "@s.whatsapp.net";
+        let mens = m.sender;
+        if (!text) throw `Contoh : ${prefix + command} Jakarta`;
+        axios
+          .get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`)
+          .then(({ data }) => {
+            var text = `Wilayah : ${data.result[0].lokasi}\n`;
+            text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[0].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[0].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[0].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[0].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[0].jadwal.isya}\n\n`;
+            text += `*SELAMAT MENUNAIKAN IBADAH PUASA kak @${
+              mens.split("@")[0]
+            }*\n\n*Owner Bot ini :  @${ownernya.split("@")[0]}*`;
+            XeonBotInc.sendMessage(
+              m.chat,
+              { text: text },
+              { quoted: fakestatus },
+              { mentions: mens, ownernya }
+            );
+          })
+          .catch(console.error);
+        break;
+      case "jadwalsholat2":
+      case "adzan2":
+        if (!text) throw `Contoh : ${prefix + command} Tangerang`;
+        axios
+          .get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`)
+          .then(({ data }) => {
+            var text = `Wilayah : ${data.result[0].lokasi}\n`;
+            text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[0].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[0].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[0].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[0].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[0].jadwal.isya}\n\n`;
+            text += `*WILAYAH KEDUA*\n\n`;
+
+            text += `Wilayah : ${data.result[1].lokasi}\n`;
+            text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[1].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[1].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[1].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[1].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[1].jadwal.isya}\n\n`;
+            text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`;
+            XeonBotInc.sendMessage(
+              from,
+              { text: text },
+              { quoted: fakestatus }
+            );
+          })
+          .catch(console.error);
+        break;
+      case "jadwalsholat3":
+      case "adzan3":
+        if (!text) throw `Contoh : ${prefix + command} Tangerang`;
+        axios
+          .get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`)
+          .then(({ data }) => {
+            var text = `Wilayah : ${data.result[0].lokasi}\n`;
+            text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[0].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[0].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[0].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[0].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[0].jadwal.isya}\n\n`;
+            text += `*WILAYAH KEDUA*\n\n`;
+
+            text += `Wilayah : ${data.result[1].lokasi}\n`;
+            text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[1].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[1].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[1].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[1].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[1].jadwal.isya}\n\n`;
+
+            text += `*WILAYAH KETIGA*\n\n`;
+
+            text += `Wilayah : ${data.result[2].lokasi}\n`;
+            text += `Tanggal : ${data.result[2].jadwal.tanggal}\n`;
+            text += `Imsak : ${data.result[2].jadwal.imsak}\n`;
+            text += `Subuh : ${data.result[2].jadwal.subuh}\n`;
+            text += `Terbit : ${data.result[2].jadwal.terbit}\n`;
+            text += `Dhuha : ${data.result[2].jadwal.dhuha}\n`;
+            text += `Dzuhur : ${data.result[2].jadwal.dzuhur}\n`;
+            text += `Ashar : ${data.result[2].jadwal.ashar}\n`;
+            text += `Maghrib : ${data.result[2].jadwal.maghrib}\n`;
+            text += `Isya : ${data.result[2].jadwal.isya}\n\n`;
+            text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`;
+            XeonBotInc.sendMessage(
+              from,
+              { text: text },
+              { quoted: fakestatus }
+            );
+          })
+          .catch(console.error);
+        break;
+
       case "play":
       case "ytplay":
         {
@@ -4598,7 +4647,7 @@ ya walaupun gada yg donate`;
       case "ytmp3":
       case "ytaudio":
         {
-        if (!m.isGroup) throw `${grupe}`
+          if (!m.isGroup) throw `${grupe}`;
           let { yta } = require("./lib/y2mate");
           if (!text)
             throw `Example : ${
@@ -4632,7 +4681,7 @@ ya walaupun gada yg donate`;
       case "ytmp4":
       case "ytvideo":
         {
-          if (!m.isGroup) throw `${grupe}`
+          if (!m.isGroup) throw `${grupe}`;
           let { ytv } = require("./lib/y2mate");
           if (!text)
             throw `Example : ${
@@ -4886,7 +4935,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
 
       // ig udah
       case "igdl":
-        if (!m.isGroup) throw `${grupe}`
+        if (!m.isGroup) throw `${grupe}`;
         if (!text)
           return m.reply(
             `Example: ${
@@ -4917,7 +4966,15 @@ Judul: ${judul} `,
             // XeonBotInc.sendMessage(from, {video: {url:url}, caption: `SUDAH KAK ${pushname}
             // Judul: ${judul} `,quoted: m})
           });
-          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/igdl.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
+        XeonBotInc.sendMessage(
+          m.chat,
+          {
+            audio: fs.readFileSync("./Media/audio/igdl.mp3"),
+            mimetype: "audio/mpeg",
+            ptt: true,
+          },
+          { quoted: m }
+        );
         break;
       case "igdl-foto":
         if (!text)
@@ -4941,7 +4998,7 @@ Judul: ${judul} `,
           });
         break;
       case "tiktok2":
-    if (!m.isGroup) throw `${grupe}`
+        if (!m.isGroup) throw `${grupe}`;
         if (!text)
           return m.reply(
             `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
@@ -4961,9 +5018,17 @@ Judul: ${judul} `,
               mention: [sender],
             });
           });
-          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
+        XeonBotInc.sendMessage(
+          m.chat,
+          {
+            audio: fs.readFileSync("./Media/audio/tiktok.mp3"),
+            mimetype: "audio/mpeg",
+            ptt: true,
+          },
+          { quoted: m }
+        );
         break;
-        
+
       // tktok udqah
       /* case 'tiktok': case 'tt':
             {
@@ -4988,11 +5053,11 @@ Judul: ${judul} `,
             })
             }
             break */
-      
+
       case "tiktokmp3":
       case "tiktokaudio":
         {
-          if (!m.isGroup) throw `${grupe}`
+          if (!m.isGroup) throw `${grupe}`;
           if (!text) return m.reply("Link Nya mana??");
           let aud = await fdl.downloader.tiktok(text);
           let cap = `𝘕𝘪𝘩 𝘒𝘢𝘬!👇`;
@@ -12559,6 +12624,37 @@ Judul: ${judul} `,
           { audio: x_tiktok, mimetype: "audio/mp4", ptt: true },
           { quoted: m }
         );
+        break;
+      // ADD FITUR
+      case "ai":
+      case "openai":
+        {
+          if (m.isGroup) return m.reply(`Khusus Grup kak`);
+          const configuration = new Configuration({
+            apiKey: `${global.apiAi}`,
+          });
+          const openai = new OpenAIApi(configuration);
+          const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: q,
+            temperature: 0,
+            max_tokens: 1000,
+            top_p: 1,
+            frequency_penalty: 0.2,
+            presence_penalty: 0,
+          });
+
+          let image = {
+            url: "https://telegra.ph/file/796dacd1c968925696b46.jpg",
+          };
+          const teks = response.data.choices[0].text;
+
+          XeonBotInc.sendMessage(
+            from,
+            { image: image, caption: teks },
+            { quoted: m }
+          );
+        }
         break;
       default:
         if (budy.startsWith("=>")) {
