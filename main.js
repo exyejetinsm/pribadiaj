@@ -4896,6 +4896,7 @@ Judul: ${judul} `,
               mention: [sender],
             });
           });
+          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
         break;
       // tktok udqah
       /* case 'tiktok': case 'tt':
