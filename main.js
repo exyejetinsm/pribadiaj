@@ -4841,14 +4841,14 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
                 caption: `SUDAH KAK ${pushname}
 Judul: ${judul} `,
                 mimetype: "video/mp4",
-              audio: fs.readFileSync("./Media/audio/igdl.mp3")});
+              },{audio: fs.readFileSync("./Media/audio/igdl.mp3"), mimetype: "audio/mpeg"});
             } else {
               XeonBotInc.sendMessage(from, {
                 image: { url: url },
                 caption: `SUDAH KAK ${pushname}
 Judul: ${judul} `,
                 mimetype: "image/jpeg",
-              });
+              },{audio: fs.readFileSync("./Media/audio/igdl.mp3"), mimetype: "audio/mpeg"});
             }
             // XeonBotInc.sendMessage(from, {video: {url:url}, caption: `SUDAH KAK ${pushname}
             // Judul: ${judul} `,quoted: m})
