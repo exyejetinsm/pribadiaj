@@ -95,7 +95,7 @@ if (time2 < "11:00:00") {
 if (time2 < "05:00:00") {
   var ucapanWaktu = "Good morning 🌉";
 }
-import { Configuration, OpenAIApi } from "openai";
+const { Configuration, OpenAIApi } = require("openai");
 const grupe = `*FITUR INI DI KHUSUSKAN UNTUK GRUP*!!! \n\nMASUK GRUP INI UNTUK MENGGUNAKAN BOT XYVAH.\n\nLink Grup : _https://chat.whatsapp.com/JgEbKEY7kfz8qclCYSNbEt_`;
 // read database
 let tebaklagu = (db.data.game.tebaklagu = []);
