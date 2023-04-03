@@ -4175,9 +4175,8 @@ ${cpus
         }
         break;
         case "tiktok2":
-           let urli = data.result.video;
-            let { toAudio } = require("./lib/converter");
-          let audioo = await toAudio(urli, "mp4");
+          
+           
         if (!text)
           return m.reply(
             `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
@@ -4188,6 +4187,9 @@ ${cpus
             `https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`
           )
           .then(({ data }) => {
+            let urli = data.result.video;
+            let { toAudio } = require("./lib/converter");
+          let audioo = toAudio(urli, "mp4");
             let uname = data.result.username;
             let desc = data.result.description;
             XeonBotInc.sendMessage(m.chat, {
