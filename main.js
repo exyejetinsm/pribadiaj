@@ -4459,23 +4459,13 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
 ~ tiktokmp3 ( mendownload audio tiktok melalui link)
 ~ ssweb ( untuk ss web )
 ~ xyvah ( untuk mengobrol dengn bot )
+~ ai ( bertanya kepada bot/ai )
+~ ai-img ( membuat gambar menggunakan text )
 ~ fitur lainnya menyusul
 Jangan lupa donasi agar botnya jalan terus
-
-Note : Penambahan fitur baru yakni.
-
-~ adzan
-~ adzan2
-~ adzan3
-~ tiktokmp3
-~ tiktok2 
-
-pakai itu untuk mengetahui adzan di setiap daerah, mengapa dibedakan?. karena setiap daerah berbeda beda wilayahnya. jadi coba satu satu yak untuk wilayah kalian
-
-kalau error chat aja owmernya. ketik #owner
-
-ketik #donasi untuk donasi,
-ya walaupun gada yg donate`;
+Untuk melihat fitur apa saja yang baru ketik\n\n
+#fiturbaru
+`;
         XeonBotInc.sendMessage(
           m.chat,
           {
@@ -4486,6 +4476,30 @@ ya walaupun gada yg donate`;
           { mentions: m.sender }
         );
         break;
+    case "fiturbaru":
+      let fiturBaru = `*FITUR BARU*!!\n\n
+_ISLAMI_
+#adzan
+#adzan2
+#adzan3
+
+_DOWNLOAD_
+#tiktokmp3
+#tiktok2
+
+_SEARCHING_
+#ai
+#ai-img
+
+Note : Coba saja pakai fitur adzan satu satu yegeys ya
+
+kalau da yang error chat owner dengan mengetik #owner
+
+ketik #donasi untuk donasi ke bot ini agar tetap jalan
+terus....
+`;
+XeonBotInc.sendMessage(m.chat, {image: {url: `https://telegra.ph/file/69bbbc957ad4715dd99a5.jpg`},caption: fiturBaru})
+break
       case "jadwalsholat":
       case "adzan":
         let ownernya = ownernomer + "@s.whatsapp.net";
@@ -12628,6 +12642,7 @@ Judul: ${judul} `,
       // ADD FITUR
       case "ai":
       case "openai":
+      case "nanya":
         try {
           if (settingss.keyopenai === "ISI_APIKEY_OPENAI_DISINI")
             return m.reply(
@@ -12668,7 +12683,7 @@ Judul: ${judul} `,
           }
         }
         break;
-        case "img": case "ai-img": case "image": case "images":
+        case "gambar": case "ai-img": case "image": case "images":
           try {
             if (settingss.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return m.reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
             if (!text) return m.reply(`Membuat gambar dari AI.\n\nContoh:\n${prefix}${command} Wooden house on snow mountain`);
