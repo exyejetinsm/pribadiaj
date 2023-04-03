@@ -12670,10 +12670,10 @@ Judul: ${judul} `,
         break;
         case "img": case "ai-img": case "image": case "images":
           try {
-            if (setting.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return m.reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
+            if (settingss.keyopenai === "ISI_APIKEY_OPENAI_DISINI") return m.reply("Apikey belum diisi\n\nSilahkan isi terlebih dahulu apikeynya di file key.json\n\nApikeynya bisa dibuat di website: https://beta.openai.com/account/api-keys");
             if (!text) return m.reply(`Membuat gambar dari AI.\n\nContoh:\n${prefix}${command} Wooden house on snow mountain`);
             const configuration = new Configuration({
-              apiKey: setting.keyopenai,
+              apiKey: settingss.keyopenai,
             });
             const openai = new OpenAIApi(configuration);
             const response = await openai.createImage({
