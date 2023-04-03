@@ -4841,7 +4841,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
                 caption: `SUDAH KAK ${pushname}
 Judul: ${judul} `,
                 mimetype: "video/mp4",
-              });
+              audio: fs.readFileSync("./Media/audio/igdl.mp3")});
             } else {
               XeonBotInc.sendMessage(from, {
                 image: { url: url },
