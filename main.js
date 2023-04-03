@@ -4915,7 +4915,8 @@ Judul: ${judul} `,
           )
           .then(({ data }) => {
             var url = data.result.video;
-            let audioo = data.result.audio;
+            let { toAudio } = require("./lib/converter");
+          let audioo = await toAudio(url, "mp4");
             let uname = data.result.username;
             let desc = data.result.description;
             XeonBotInc.sendMessage(m.chat, {
@@ -4932,7 +4933,7 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
             XeonBotInc.sendMessage(m.chat, {
               audio: { url: audioo },
               mimetype: "audio/mpeg",
-              ptt: true,
+              ptt: true
               quoted: fkontak,
               mention: [sender],
             });
