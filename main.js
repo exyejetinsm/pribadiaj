@@ -4371,20 +4371,129 @@ ${cpus
         }
         break;
       case "bot":
-        let pesanBot = `Halokak Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
+        let pesanBot = `Halokak @${pushname} Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
 ~ igdl ( kegunaanya untuk download ig reel dan post)
 ~ sticker ( mengubah foto menjadi sticker )
 ~ ytmp4 ( mendownload video yt )
 ~ ytmp3 ( mendownload conversi video yt menjadi video )
 ~ tiktok ( mendownload video tiktok )
 ~ fitur lainnya menyusul
-Jangan lupa donasi agar botnya jalan terus `;
+Jangan lupa donasi agar botnya jalan terus
+
+Note : Penambahan fitur baru yakni.
+
+~ adzan
+~ adzan2
+~ adzan3
+
+pakai itu untuk mengetahui adzan di setiap daerah, mengapa dibedakan?. karena setiap daerah berbeda beda wilayahnya. jadi coba satu satu yak untuk wilayah kalian
+
+kalau error chat aja owmernya. ketik #owmer
+ketik #donasi untuk donasi,
+ya walaupun gada yg donate`;
         XeonBotInc.sendMessage(
           m.chat,
           { text: pesanBot },
-          { quoted: fakestatus }
+          { quoted: fakestatus }, { mentions: m.sender }
         );
         break;
+    case "jadwalsholat":
+     case "adzan":
+       let ownernya = ownernomer + "@s.whatsapp.net";
+       let mens = m.sender;
+     if (!text) throw `Contoh : ${prefix + command} Jakarta`;
+     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
+           var text = `Wilayah : ${data.result[0].lokasi}\n`
+					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
+					text += `*SELAMAT MENUNAIKAN IBADAH PUASA kak @${mens.split("@")[0]}*\n\n*Owner Bot ini :  @${ownernya.split("@")[0]}*`
+	XeonBotInc.sendMessage(m.chat, {text: text}, {quoted: fakestatus}, {mentions: mens, ownernya})
+				})
+				.catch(console.error)
+					break;
+	case "jadwalsholat2":
+     case "adzan2":
+     if (!text) throw `Contoh : ${prefix + command} Tangerang`;
+     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
+           var text = `Wilayah : ${data.result[0].lokasi}\n`
+					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
+					text += `*WILAYAH KEDUA*\n\n`
+					
+					text += `Wilayah : ${data.result[1].lokasi}\n`
+					text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[1].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[1].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[1].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[1].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[1].jadwal.isya}\n\n`
+					text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`
+					XeonBotInc.sendMessage(from, {text: text}, {quoted: fakestatus})
+				})
+				.catch(console.error)
+				break
+    case "jadwalsholat3":
+     case "adzan3":
+     if (!text) throw `Contoh : ${prefix + command} Tangerang`;
+     axios.get(`https://saipulanuar.ga/api/muslim/jadwalshalat?kota=${args[0]}`).then(({ data }) => {
+           var text = `Wilayah : ${data.result[0].lokasi}\n`
+					text += `Tanggal : ${data.result[0].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[0].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[0].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[0].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[0].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[0].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[0].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[0].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[0].jadwal.isya}\n\n`
+					text += `*WILAYAH KEDUA*\n\n`
+					
+					text += `Wilayah : ${data.result[1].lokasi}\n`
+					text += `Tanggal : ${data.result[1].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[1].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[1].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[1].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[1].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[1].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[1].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[1].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[1].jadwal.isya}\n\n`
+					
+					text += `*WILAYAH KETIGA*\n\n`
+					
+					text += `Wilayah : ${data.result[2].lokasi}\n`
+					text += `Tanggal : ${data.result[2].jadwal.tanggal}\n`
+					text += `Imsak : ${data.result[2].jadwal.imsak}\n`
+					text += `Subuh : ${data.result[2].jadwal.subuh}\n`
+					text += `Terbit : ${data.result[2].jadwal.terbit}\n`
+					text += `Dhuha : ${data.result[2].jadwal.dhuha}\n`
+					text += `Dzuhur : ${data.result[2].jadwal.dzuhur}\n`
+					text += `Ashar : ${data.result[2].jadwal.ashar}\n`
+					text += `Maghrib : ${data.result[2].jadwal.maghrib}\n`
+					text += `Isya : ${data.result[2].jadwal.isya}\n\n`
+           text += `*SELAMAT MENUNAIKAN IBADAH PUASA*`
+					XeonBotInc.sendMessage(from, {text: text}, {quoted: fakestatus})
+				})
+				.catch(console.error)
+			break 
+        
       case "play":
       case "ytplay":
         {
