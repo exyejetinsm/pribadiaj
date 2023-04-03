@@ -4853,7 +4853,7 @@ Judul: ${judul} `,
             // XeonBotInc.sendMessage(from, {video: {url:url}, caption: `SUDAH KAK ${pushname}
             // Judul: ${judul} `,quoted: m})
           });
-          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/igdl.mp3"), mimetype: "audio/mpeg"})
+          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/igdl.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
         break;
       case "igdl-foto":
         if (!text)
