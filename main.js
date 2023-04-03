@@ -12629,7 +12629,7 @@ Judul: ${judul} `,
       case "ai":
       case "openai":
         {
-          if (m.isGroup) return m.reply(`Khusus Grup kak`);
+          if (!m.isGroup) return m.reply(`Khusus Grup kak`);
           const configuration = new Configuration({
             apiKey: `${global.apiAi}`,
           });
