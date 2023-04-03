@@ -4377,6 +4377,8 @@ ${cpus
 ~ ytmp4 ( mendownload video yt )
 ~ ytmp3 ( mendownload conversi video yt menjadi video )
 ~ tiktok ( mendownload video tiktok )
+~ tiktok2
+~ tiktok3 ( mendownload sekaligus audio dan video )
 ~ fitur lainnya menyusul
 Jangan lupa donasi agar botnya jalan terus
 
@@ -4385,6 +4387,9 @@ Note : Penambahan fitur baru yakni.
 ~ adzan
 ~ adzan2
 ~ adzan3
+~ tiktok3
+~ tiktokmp3
+~ tiktok2
 
 pakai itu untuk mengetahui adzan di setiap daerah, mengapa dibedakan?. karena setiap daerah berbeda beda wilayahnya. jadi coba satu satu yak untuk wilayah kalian
 
@@ -4898,6 +4903,40 @@ Judul: ${judul} `,
           });
           XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
         break;
+        case "tiktok3":
+        if (!text)
+          return m.reply(
+            `Contoh: ${prefix + command} https://vt.tiktok.com/ZS8pUSWAC/`
+          );
+        m.reply(mess.wait);
+        axios
+          .get(
+            `https://saipulanuar.ga/api/download/tiktok?url=${args[0]}`
+          )
+          .then(({ data }) => {
+            var url = data.result.video;
+            let audioo = data.result.audio;
+            let uname = data.result.username;
+            let desc = data.result.description;
+            XeonBotInc.sendMessage(m.chat, {
+              video: { url: url },
+              caption: `SUDAH KAK ${pushname}\n
+🎭 Username  : ${uname}
+🩲 Deskripsi : ${desc}`,
+              footer: `By kak fadhlan bot`,
+              quoted: fkontak,
+              mention: [sender],
+            });
+            XeonBotInc.sendMessage(m.chat, {
+              audio: { url: audioo },
+              caption: `SUDAH KAK ${pushname}`,
+              footer: `By kak fadhlan bot`,
+              quoted: fkontak,
+              mention: [sender],
+            });
+          });
+          XeonBotInc.sendMessage(m.chat, {audio: fs.readFileSync("./Media/audio/tiktok.mp3"), mimetype: "audio/mpeg", ptt: true}, {quoted: m})
+        break;
       // tktok udqah
       /* case 'tiktok': case 'tt':
             {
@@ -4927,23 +4966,11 @@ Judul: ${judul} `,
       case "tt2":
         if (!text) return m.reply("𝘓𝘪𝘯𝘬 𝘕𝘺𝘢 𝘔𝘢𝘯𝘢??");
         let p = await fdl.downloader.tiktok(q);
-        let nih = ` 𝘕𝘪𝘩 𝘒𝘢𝘬 𝘔𝘢𝘥𝘦 𝘉𝘺 ${author} 𝘑𝘢𝘯𝘨𝘢𝘯 𝘓𝘶𝘱𝘢 𝘚𝘶𝘴𝘤𝘳𝘪𝘣𝘦 https://www.youtube.com/@xyzlann1747`;
-        let buttons = [
-          {
-            buttonId: `tiktokmp3 ${text}`,
-            buttonText: { displayText: "♫ Audio" },
-            type: 1,
-          },
-        ];
-        let buttonMessage = {
-          video: { url: p.nowm },
-          caption: nih,
-          title: "TIKTOK DOWNLOADER",
-          footer: botname,
-          buttons: buttons,
-          headerType: 5,
-        };
-        XeonBotInc.sendMessage(from, buttonMessage, { quoted: m });
+        let nih = ` 𝘕𝘪𝘩 𝘒𝘢𝘬 𝘔𝘢𝘥𝘦 𝘉𝘺 ${author} 𝘑𝘢𝘯𝘨𝘢𝘯 𝘓𝘶𝘱𝘢 𝘚𝘶𝘴𝘤𝘳𝘪𝘣𝘦 https://www.youtube.com/@xyzlann1747
+        
+        kalau mau donwload audionya ketik #tiktokmp3 linknya`;
+        
+        XeonBotInc.sendMessage(from, {video: p.nowm, caption: nih}, { quoted: m });
 
         break;
       case "tiktokmp3":
