@@ -4498,7 +4498,7 @@ kalau da yang error chat owner dengan mengetik #owner
 ketik #donasi untuk donasi ke bot ini agar tetap jalan
 terus....
 `;
-XeonBotInc.sendMessage(m.chat, {image: {url: `https://telegra.ph/file/69bbbc957ad4715dd99a5.jpg`},caption: fiturBaru})
+XeonBotInc.sendMessage(m.chat, {image: {url: `https://telegra.ph/file/69bbbc957ad4715dd99a5.jpg`},caption: fiturBaru},{quoted: fakestatus})
 break
       case "jadwalsholat":
       case "adzan":
