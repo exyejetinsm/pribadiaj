@@ -4948,6 +4948,29 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
         break;
 
       // ig udah
+       case "fb":
+        if (!m.isGroup) throw `${grupe}`;
+        if (!text)
+          return m.reply(
+            `Contoh: ${prefix + command} https://www.facebook.com/ngakakocak/videos/video-lucu-dan-gokil/607085686836013`
+          );
+        axios
+          .get(`https://saipulanuar.ga/api/download/fb?url=${text}`)
+          .then(({ data }) => {
+            let ayang = data.result.hd;
+            let desc = data.result.title;
+            XeonBotInc.sendMessage(m.chat, {
+              video: { url: ayang },
+              caption: `SUDAH KAK ${pushname}\n
+🎭 Judul  : ${desc}\n
+`,
+              footer: `By kak fadhlan bot`,
+              quoted: fkontak,
+              mention: [sender],
+            });
+          });
+        break;
+        // END
       case "igdl":
         if (!m.isGroup) throw `${grupe}`;
         if (!text)
