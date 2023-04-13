@@ -4461,6 +4461,7 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
 ~ xyvah ( untuk mengobrol dengn bot )
 ~ ai ( bertanya kepada bot/ai )
 ~ ai-img ( membuat gambar menggunakan text )
+~ fb { mendownload video fb}
 ~ fitur lainnya menyusul
 Jangan lupa donasi agar botnya jalan terus
 Untuk melihat fitur apa saja yang baru ketik\n\n
@@ -4486,6 +4487,7 @@ _ISLAMI_
 _DOWNLOAD_
 #tiktokmp3
 #tiktok2
+#fb
 
 _SEARCHING_
 #ai
@@ -4962,6 +4964,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
             XeonBotInc.sendMessage(m.chat, {
               video: { url: ayang },
               caption: `SUDAH KAK ${pushname}\n
+*[ FB VIDEO DOWNLOADER ]*\n
 🎭 Judul  : ${desc}\n
 `,
               footer: `By kak fadhlan bot`,
