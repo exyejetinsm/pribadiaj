@@ -497,6 +497,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
     });
 
     //chat counter
+    /*
     if (m.message) {
       XeonBotInc.readMessages([m.key]);
       console.log(
@@ -510,7 +511,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         chalk.green(m.isGroup ? pushname : "Private Chat", m.chat)
       );
     }
-
+*/
     // reset limit every 12 hours
     let cron = require("node-cron");
     cron.schedule(
@@ -3821,9 +3822,6 @@ View list of Messages With ${prefix}listmsg`);
         }
         break;
       case "ping":
-      case "p":
-      case "botstatus":
-      case "statusbot":
         {
           const used = process.memoryUsage();
           const cpus = os.cpus().map((cpu) => {
@@ -4447,9 +4445,17 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
           XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m });
         }
         break;
+        case "assalamualaikum":
+        case "assalamu'alaikum":
+          let salamm = `*Wa'alaikum Sallam Warahmatullahi Wabarakatuh..*\n\n
+_“Sesungguhnya orang yang paling utama di sisi Allah adalah mereka yang memulai salam.” (HR Abu Dawud dan Tirmidzi)._
+
+*[ Q.s Al-Isra:32 ]*`
+        XeonBotInc.sendMessage(m.chat, {text:salamm }, {quoted: m})
+        break
       case "bot":
       case "menu":
-        let pesanBot = `Halokak @${pushname} Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
+        let pesanBot = `Assalamualaikum @${pushname} Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
 ~ igdl ( kegunaanya untuk download ig reel dan post)
 ~ sticker ( mengubah foto menjadi sticker )
 ~ ytmp4 ( mendownload video yt )
@@ -4466,11 +4472,13 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
 Jangan lupa donasi agar botnya jalan terus
 Untuk melihat fitur apa saja yang baru ketik\n\n
 #fiturbaru
+
+Jangan lupa Follow ig @mf4dhlan_24
 `;
         XeonBotInc.sendMessage(
           m.chat,
           {
-            image: { url: `https://telegra.ph/file/ad250e6cc626201bc0365.jpg` },
+            image: { url: `https://telegra.ph/file/3cbcd55496fe07374d158.jpg` },
             caption: pesanBot,
           },
           { quoted: fakestatus },

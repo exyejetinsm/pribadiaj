@@ -30,7 +30,7 @@ global.owner = ["6281311268263"]; //ur number
 global.ownernomer = "6281311268263"; //ur number
 global.ownertag = "6281311268263"; //ur tag number
 global.premium = ["6281311268263"]; //ur premium number
-global.botname = "XyVah-𝘔𝘥"; //ur bot name
+global.botname = "Lanzz Insm"; //ur bot name
 global.ownername = "Muhamad Fadhlan";
 global.linkz =
   "https://res.cloudinary.com/dk0z4ums3/image/upload/v1661753019/attached_image/inilah-cara-merawat-anak-kucing-yang-tepat-0-alodokter.jpg"; //your theme url which will be displayed on whatsapp
@@ -42,8 +42,8 @@ global.websitex1 = "https://www.youtube.com/@xyzlann1747";
 global.botscript = "https://www.youtube.com/@xyzlann1747"; //script link
 global.themeemoji = "🦄"; //ur theme emoji
 global.packname = "Sticker By"; //ur sticker watermark packname
-global.author = "XyVah Bot"; //ur sticker watermark author
-global.wm = "XyVah Bot ofc"; //ur watermark
+global.author = "Lanzz Insm"; //ur sticker watermark author
+global.wm = "XLanzz Insm"; //ur watermark
 
 // Other
 global.apiAi = "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";

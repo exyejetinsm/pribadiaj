@@ -66,13 +66,14 @@ async function startXeonBotInc() {
     const XeonBotInc = XeonBotIncConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['XyVah Bot Inc','Safari','1.0.0'],
+        browser: ['Lanzz Insm','Safari','1.0.0'],
         auth: state
     })
 
     store.bind(XeonBotInc.ev)
     
     // anticall auto block
+    /*
     XeonBotInc.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
@@ -81,7 +82,7 @@ async function startXeonBotInc() {
     await sleep(8000)
     await XeonBotInc.updateBlockStatus(callerId, "block")
     }
-    })
+    })*/
 
     XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
