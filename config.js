@@ -45,6 +45,16 @@ global.packname = "Sticker By"; //ur sticker watermark packname
 global.author = "Lanzz Insm"; //ur sticker watermark author
 global.wm = "XLanzz Insm"; //ur watermark
 
+// Website Api
+global.APIs = {
+	zenz: 'https://api.zahwazein.xyz',
+}
+
+// Apikey Website Api
+global.APIKeys = {
+	'https://api.zahwazein.xyz': 'zenzkey_d0119533c5f2',
+}
+
 // Other
 global.apiAi = "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";
 global.sessionName = "Session";
