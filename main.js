@@ -4981,18 +4981,35 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
            });
          });
        break;
-       case 'instagram': case 'ig': case 'igdl': {
-        if (!text) throw 'No Query Url!'
-        m.reply(mess.wait)
-        if (/(?:\/p\/|\/reel\/|\/tv\/)([^\s&]+)/.test(isUrl(text)[0])) {
-            let anu = await fetchJson(api('zenz', '/downloader/instagram2', { url: isUrl(text)[0] }, 'apikey'))
-            for (let media of anu.data) XeonBotInc.sendFileUrl(m.chat, media, `Download Url Instagram From ${isUrl(text)[0]}`, m)
-        } else if (/\/stories\/([^\s&]+)/.test(isUrl(text)[0])) {
-            let anu = await fetchJson(api('zenz', '/downloader/instastory', { url: isUrl(text)[0] }, 'apikey'))
-            XeonBotInc.sendFileUrl(m.chat, anu.media[0].url, `Download Url Instagram From ${isUrl(text)[0]}`, m)
-        }
-    }
-    break
+
+        case 'igdl':
+			if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
+			axios.get(`https://sh.xznsenpai.xyz/api/igdl?url=${args[0]}`).then(({ data }) => {
+				var urliy = data.media
+        let capte = data.caption
+				if (urliy.includes('.mp4')) {
+					XeonBotInc.sendMessage(from, 
+            { video: { urliy },
+            mimetype: 'video/mp4' })
+				}
+			})
+			break
+      /*
+      case "ige":
+        if(!text) throw `Mana linknya?`
+        m.reply(mess.wait) 
+        let peLer = await fetchJson(
+          "https://sh.xznsenpai.xyz/api/igdl?url=${text}"
+        );
+        var ling = peLer.media
+          XeonBotInc.sendMessage(m.chat, {
+            video: { url: ling },
+            caption: `SUDAH KAK ${pushname}`,
+            footer: `By kak fadhlan bot`,
+            quoted: fkontak,
+            mention: [sender],
+          });
+        break */
      
       case "igdl-foto":
         if (!text)
