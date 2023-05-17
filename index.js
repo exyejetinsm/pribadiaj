@@ -1,6 +1,5 @@
 require('./config')
-const { default: XeonBotIncConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
-const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
+const { default: XeonBotIncConnect, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -63,6 +62,7 @@ if (global.db) setInterval(async () => {
   }, 30 * 1000)
 
 async function startXeonBotInc() {
+    const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName}`)
     const XeonBotInc = XeonBotIncConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
@@ -327,7 +327,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
         console.log('Connected...', update)
     })
 
-    XeonBotInc.ev.on('creds.update', saveState)
+    XeonBotInc.ev.on('creds.update', saveCreds)
 
     // Add Other
 

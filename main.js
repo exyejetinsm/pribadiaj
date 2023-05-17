@@ -4983,7 +4983,7 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
        break;
 
         case 'igdl':
-			if (args.length == 0) return reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
+			if (args.length == 0) return m.reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
 			axios.get(`https://sh.xznsenpai.xyz/api/igdl?url=${args[0]}`).then(({ data }) => {
 				var urliy = data.media
         let capte = data.caption

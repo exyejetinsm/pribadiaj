@@ -21,7 +21,7 @@
   "author": "Jarot",
   "license": "MIT",
   "dependencies": {
-    "@adiwajshing/baileys": "^4.4.0",
+    "@adiwajshing/baileys": "latest",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@shineiichijo/marika": "^2.0.2",
     "@shineiichijo/nhentai-pdf": "^1.0.5",
