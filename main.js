@@ -497,6 +497,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
     });
 
     //chat counter
+    /*
     if (m.message) {
       XeonBotInc.readMessages([m.key]);
       console.log(
@@ -510,7 +511,7 @@ module.exports = XeonBotInc = async (XeonBotInc, m, chatUpdate, store) => {
         chalk.green(m.isGroup ? pushname : "Private Chat", m.chat)
       );
     }
-
+*/
     // reset limit every 12 hours
     let cron = require("node-cron");
     cron.schedule(
@@ -3821,9 +3822,6 @@ View list of Messages With ${prefix}listmsg`);
         }
         break;
       case "ping":
-      case "p":
-      case "botstatus":
-      case "statusbot":
         {
           const used = process.memoryUsage();
           const cpus = os.cpus().map((cpu) => {
@@ -4447,9 +4445,16 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
           XeonBotInc.sendMessage(m.chat, buttonMessage, { quoted: m });
         }
         break;
+        case "assalamualaikum":
+        case "assalamu'alaikum":
+          let salamm = `*Wa'alaikum Sallam Warahmatullahi Wabarakatuh..*\n\n
+_“Sesungguhnya orang yang paling utama di sisi Allah adalah mereka yang memulai salam.” (HR Abu Dawud dan Tirmidzi)._
+
+*[ Q.s Al-Isra:32 ]*`
+        XeonBotInc.sendMessage(m.chat, {text:salamm }, {quoted: m})
+        break
       case "bot":
-      case "menu":
-        let pesanBot = `Halokak @${pushname} Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
+        let pesanBot = `Assalamualaikum @${pushname} Saya Bot dari ${author}\nMenu Saat ini yang sering digunakan ialah :
 ~ igdl ( kegunaanya untuk download ig reel dan post)
 ~ sticker ( mengubah foto menjadi sticker )
 ~ ytmp4 ( mendownload video yt )
@@ -4466,11 +4471,13 @@ Kalau kau mau donwload audionya ketik #tiktokmp3 linknya`,
 Jangan lupa donasi agar botnya jalan terus
 Untuk melihat fitur apa saja yang baru ketik\n\n
 #fiturbaru
+
+Jangan lupa Follow ig @mf4dhlan_24
 `;
         XeonBotInc.sendMessage(
           m.chat,
           {
-            image: { url: `https://telegra.ph/file/ad250e6cc626201bc0365.jpg` },
+            image: { url: `https://telegra.ph/file/3cbcd55496fe07374d158.jpg` },
             caption: pesanBot,
           },
           { quoted: fakestatus },
@@ -4950,72 +4957,60 @@ Untuk Download Media Silahkan Klik salah satu Button dibawah ini atau masukkan c
         break;
 
       // ig udah
-       case "fb":
-        if (!m.isGroup) throw `${grupe}`;
-        if (!text)
-          return m.reply(
-            `Contoh: ${prefix + command} https://www.facebook.com/ngakakocak/videos/video-lucu-dan-gokil/607085686836013`
-          );
-        axios
-          .get(`https://saipulanuar.ga/api/download/fb?url=${text}`)
-          .then(({ data }) => {
-            let ayang = data.result.hd;
-            let desc = data.result.title;
-            XeonBotInc.sendMessage(m.chat, {
-              video: { url: ayang },
-              caption: `SUDAH KAK ${pushname}\n
+      // END
+      case "fb":
+       if (!m.isGroup) throw `${grupe}`;
+       if (!text)
+         return m.reply(
+           `Contoh: ${prefix + command} https://www.facebook.com/ngakakocak/videos/video-lucu-dan-gokil/607085686836013`
+         );
+       axios
+         .get(`https://saipulanuar.ga/api/download/fb?url=${text}`)
+         .then(({ data }) => {
+           let ayang = data.result.hd;
+           let desc = data.result.title;
+           XeonBotInc.sendMessage(m.chat, {
+             video: { url: ayang },
+             caption: `SUDAH KAK ${pushname}\n
 *[ FB VIDEO DOWNLOADER ]*\n
 🎭 Judul  : ${desc}\n
 `,
-              footer: `By kak fadhlan bot`,
-              quoted: fkontak,
-              mention: [sender],
-            });
-          });
-        break;
-        // END
-      case "igdl":
-        if (!m.isGroup) throw `${grupe}`;
-        if (!text)
-          return m.reply(
-            `Example: ${
-              prefix + command
-            } https://www.instagram.com/p/CNtpwxuH5NK/?igshid=g26k5coikzwr`
-          );
-        m.reply(mess.wait);
-        axios
-          .get(`https://saipulanuar.ga/api/downloader/instagram?url=${args[0]}`)
-          .then(({ data }) => {
-            var url = data.result.url;
-            let judul = data.result.title;
-            if (url.includes(".mp4")) {
-              XeonBotInc.sendMessage(from, {
-                video: { url: url },
-                caption: `SUDAH KAK ${pushname}
-Judul: ${judul} `,
-                mimetype: "video/mp4",
-              });
-            } else {
-              XeonBotInc.sendMessage(from, {
-                image: { url: url },
-                caption: `SUDAH KAK ${pushname}
-Judul: ${judul} `,
-                mimetype: "image/jpeg",
-              });
-            }
-            // XeonBotInc.sendMessage(from, {video: {url:url}, caption: `SUDAH KAK ${pushname}
-            // Judul: ${judul} `,quoted: m})
-          });
-        XeonBotInc.sendMessage(
-          m.chat,
-          {
-            audio: fs.readFileSync("./Media/audio/igdl.mp3"),
-            mimetype: "audio/mpeg",
-            ptt: true,
-          },
-          { quoted: m }
+             footer: `By kak fadhlan bot`,
+             quoted: fkontak,
+             mention: [sender],
+           });
+         });
+       break;
+
+        case 'igdl':
+			if (args.length == 0) return m.reply(`Example: ${prefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
+			axios.get(`https://sh.xznsenpai.xyz/api/igdl?url=${args[0]}`).then(({ data }) => {
+				var urliy = data.media
+        let capte = data.caption
+				if (urliy.includes('.mp4')) {
+					XeonBotInc.sendMessage(from, 
+            { video: { urliy },
+            mimetype: 'video/mp4' })
+				}
+			})
+			break
+      /*
+      case "ige":
+        if(!text) throw `Mana linknya?`
+        m.reply(mess.wait) 
+        let peLer = await fetchJson(
+          "https://sh.xznsenpai.xyz/api/igdl?url=${text}"
         );
-        break;
+        var ling = peLer.media
+          XeonBotInc.sendMessage(m.chat, {
+            video: { url: ling },
+            caption: `SUDAH KAK ${pushname}`,
+            footer: `By kak fadhlan bot`,
+            quoted: fkontak,
+            mention: [sender],
+          });
+        break */
+     
       case "igdl-foto":
         if (!text)
           return m.reply(

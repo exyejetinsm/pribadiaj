@@ -1,6 +1,5 @@
 require('./config')
-const { default: XeonBotIncConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
-const { state, saveState } = useSingleFileAuthState(`./${sessionName}.json`)
+const { default: XeonBotIncConnect, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
 const pino = require('pino')
 const { Boom } = require('@hapi/boom')
 const fs = require('fs')
@@ -63,16 +62,18 @@ if (global.db) setInterval(async () => {
   }, 30 * 1000)
 
 async function startXeonBotInc() {
+    const { state, saveCreds } = await useMultiFileAuthState(`./${sessionName}`)
     const XeonBotInc = XeonBotIncConnect({
         logger: pino({ level: 'silent' }),
         printQRInTerminal: true,
-        browser: ['XyVah Bot Inc','Safari','1.0.0'],
+        browser: ['Lanzz Insm','Safari','1.0.0'],
         auth: state
     })
 
     store.bind(XeonBotInc.ev)
     
     // anticall auto block
+    /*
     XeonBotInc.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
@@ -81,7 +82,7 @@ async function startXeonBotInc() {
     await sleep(8000)
     await XeonBotInc.updateBlockStatus(callerId, "block")
     }
-    })
+    })*/
 
     XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
@@ -326,7 +327,7 @@ XeonBotInc.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
         console.log('Connected...', update)
     })
 
-    XeonBotInc.ev.on('creds.update', saveState)
+    XeonBotInc.ev.on('creds.update', saveCreds)
 
     // Add Other
 
